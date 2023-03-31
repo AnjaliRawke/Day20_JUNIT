@@ -4,13 +4,25 @@ package com.bridgelabz;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+@RunWith(Parameterized.class)
 public class UserRegistrationTest {
+
 	UserRegistration userRegistration ;
 	@Before
 	public void initialize(){
 		userRegistration = new UserRegistration();
 	}
+		String emailId;
+		public UserRegistrationTest(String emailId){
+			super();
+			this.emailId = emailId;
+		}
 	@Test
 	public void firstNameHappyTest(){
 		boolean firstName = userRegistration.checkFirstName("Anjali");
@@ -60,5 +72,14 @@ public class UserRegistrationTest {
 	public void emailSadTest(){
 		boolean email = userRegistration.checkEmail("Anjali@gmail.com");
 		Assert.assertFalse(email);
+	}
+
+	@Parameterized.Parameters
+	public static Collection input(){
+		return Arrays.asList( new String[] {"abc@yahoo.com","abc.100@abc.com.au","abc@1.com","abc+100@gmail.com","abc.100@yahoo.com","abc-100@abc.net","abc-100@yahoo.com","abc111@abc.com"});
+	}
+	@Test
+	public void checkEmailWithMultipleInputs(){
+		Assert.assertEquals(true,userRegistration.checkEmail(emailId));
 	}
 }
