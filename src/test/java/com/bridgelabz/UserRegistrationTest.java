@@ -61,6 +61,4 @@ public class UserRegistrationTest {
 		boolean email = userRegistration.checkEmail("Anjali@gmail.com");
 		Assert.assertFalse(email);
 	}
-
-
 }
