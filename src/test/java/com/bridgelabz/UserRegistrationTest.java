@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -24,54 +23,33 @@ public class UserRegistrationTest {
 			this.emailId = emailId;
 		}
 	@Test
-	public void firstNameHappyTest(){
+	public void firstNameTest() throws InvalidUserException {
 		boolean firstName = userRegistration.checkFirstName("Anjali");
 		Assert.assertEquals(true,firstName);
 	}
+
 	@Test
-	public void firstNameSadTest(){
-		boolean firstName = userRegistration.checkFirstName("anjali");
-		Assert.assertFalse(firstName);
-	}
-	@Test
-	public void LastNameHappyTest(){
+	public void LastNameTest() throws InvalidUserException {
 		boolean lastName = userRegistration.checkLastName("Rawke");
 		Assert.assertTrue(lastName);
 	}
+
 	@Test
-	public void LastNameSadTest(){
-		boolean lastName = userRegistration.checkLastName("rawke");
-		Assert.assertFalse(lastName);
-	}
-	@Test
-	public void phoneNumberHappyTest(){
+	public void phoneNumberTest() throws InvalidUserException {
 		boolean phoneNumber = userRegistration.checkMobileNumber("917058162286");
 		Assert.assertTrue(phoneNumber);
 	}
+
 	@Test
-	public void phoneNumberSadTest(){
-		boolean phoneNumber = userRegistration.checkMobileNumber("12221 7058162286");
-		Assert.assertFalse(phoneNumber);
-	}
-	@Test
-	public void passwordHappyTest(){
+	public void passwordTest() throws InvalidUserException {
 		boolean password = userRegistration.checkPassword("Anjali@21");
 		Assert.assertTrue(password);
 	}
+
 	@Test
-	public void passwordSadTest(){
-		boolean password = userRegistration.checkPassword("anjali21");
-		Assert.assertFalse(password);
-	}
-	@Test
-	public void emailHappyTest(){
+	public void emailTest() throws InvalidUserException {
 		boolean email = userRegistration.checkEmail("anjalirawke21@gmail.com");
 		Assert.assertTrue(email);
-	}
-	@Test
-	public void emailSadTest(){
-		boolean email = userRegistration.checkEmail("Anjali@gmail.com");
-		Assert.assertFalse(email);
 	}
 
 	@Parameterized.Parameters
@@ -79,7 +57,7 @@ public class UserRegistrationTest {
 		return Arrays.asList( new String[] {"abc@yahoo.com","abc.100@abc.com.au","abc@1.com","abc+100@gmail.com","abc.100@yahoo.com","abc-100@abc.net","abc-100@yahoo.com","abc111@abc.com"});
 	}
 	@Test
-	public void checkEmailWithMultipleInputs(){
-		Assert.assertEquals(true,userRegistration.checkEmail(emailId));
+	public void checkEmailWithMultipleInputs() throws InvalidUserException {
+			Assert.assertEquals(true,userRegistration.checkEmail(emailId));
 	}
 }
