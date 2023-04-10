@@ -24,31 +24,31 @@ public class UserRegistrationTest {
 		}
 	@Test
 	public void firstNameTest() throws InvalidUserException {
-		boolean firstName = userRegistration.checkFirstName("Anjali");
+		boolean firstName = userRegistration.validateFirstName.validateFirstName("Anjali");
 		Assert.assertEquals(true,firstName);
 	}
 
 	@Test
 	public void LastNameTest() throws InvalidUserException {
-		boolean lastName = userRegistration.checkLastName("Rawke");
+		boolean lastName = userRegistration.validateLastName.validateLastName("Rawke");
 		Assert.assertTrue(lastName);
 	}
 
 	@Test
 	public void phoneNumberTest() throws InvalidUserException {
-		boolean phoneNumber = userRegistration.checkMobileNumber("917058162286");
+		boolean phoneNumber = userRegistration.validateMobileNumber.validateMobileNumber("917058162286");
 		Assert.assertTrue(phoneNumber);
 	}
 
 	@Test
 	public void passwordTest() throws InvalidUserException {
-		boolean password = userRegistration.checkPassword("Anjali@21");
+		boolean password = userRegistration.validatePassword.validatePassword("Anjali@21");
 		Assert.assertTrue(password);
 	}
 
 	@Test
 	public void emailTest() throws InvalidUserException {
-		boolean email = userRegistration.checkEmail("anjalirawke21@gmail.com");
+		boolean email = userRegistration.validateEmailId.validateEmailId("anjalirawke21@gmail.com");
 		Assert.assertTrue(email);
 	}
 
@@ -58,6 +58,6 @@ public class UserRegistrationTest {
 	}
 	@Test
 	public void checkEmailWithMultipleInputs() throws InvalidUserException {
-			Assert.assertEquals(true,userRegistration.checkEmail(emailId));
+			Assert.assertEquals(true, userRegistration.validateEmailId.validateEmailId(emailId));
 	}
 }
